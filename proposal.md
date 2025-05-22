@@ -14,8 +14,10 @@ People who enjoy turn-based strategy games
 -Functional map grid
 -Each player can control and know the location of only their ship.\
 -Each ship can fire a few times a turn and move once a turn
+-Each ship has a health value, decreasing when hit.
 # Nice To Have:
 -Spiffy map graphics
+-Score system
 -Loot system/pickups on the map
 -Multiple ships per player
 -Neutral ships/towns
