@@ -1,5 +1,4 @@
-from flask import session
-from flask import Flask
+from flask import Flask, session, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -28,3 +27,7 @@ def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
+
+with app.test_request_context('/login', method='POST'):
+    assert request.path == '/login'
+    assert request.method == 'POST'
