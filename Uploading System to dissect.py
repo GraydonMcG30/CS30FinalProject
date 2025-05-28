@@ -10,11 +10,11 @@ def hello_world():
 def upload_file():
     if request.method == 'POST':
         f = request.files['files']
-        f.save('/Users/djangod/newTest.txt')
+        f.save('Test.txt')
         return '200'
     else:
         return 'Upload Page'
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run()
+    app.run(port = 5000)
+    
