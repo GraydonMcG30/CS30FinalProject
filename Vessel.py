@@ -1,7 +1,4 @@
-#Imports and Global Variables
-import pickle
-import random
-import collections
+
 
 
 #Classes
@@ -17,3 +14,16 @@ class Vessel:
         self.x = x
         self.y = y
         self.health = health
+        self.exists = True
+        
+    def takeDamage(self, damage):
+        self.health -= damage
+        if self.health <= 0:
+            self.exists = False
+        
+    def move(xshift, yshift):
+        self.x = x + xshift
+        self.y = y + yshift
+    
+
+    
