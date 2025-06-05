@@ -1,3 +1,5 @@
+import random
+import emoji
 class Ocean:
     def __init__ (self, height, width):
         self.width = width
@@ -8,7 +10,10 @@ class Ocean:
         for row in range(self.height):
             map_.append([])
             for column in range(self.width):
-                map_[row].append([])
+                if random.randint(1, 5) > 4:
+                    map_[row].append([emoji.emojize(":mountain:")])#blocker
+                else:
+                    map_[row].append
         return map_
     
 oceanMap = Ocean(10, 10)
