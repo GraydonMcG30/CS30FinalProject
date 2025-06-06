@@ -13,11 +13,11 @@ class Ocean:
                 if random.randint(1, 5) > 4:
                     map_[row].append([emoji.emojize(":mountain:")])#blocker
                 else:
-                    map_[row].append
+                    map_[row].append([emoji.emojize(":water_wave:")])
+        map_[0][0] = []
+        map_[9][9] = []
         return map_
-    
-oceanMap = Ocean(10, 10)
-print(oceanMap.map)
+
                 
         
         
