@@ -1,6 +1,6 @@
 #Imports and Global Variables
-import turnProcessor
-    
+import targetingData
+
 #Classes
 class Vessel:
     """Any and all ships."""
@@ -29,15 +29,19 @@ class Vessel:
         while True:
             coord1 = int(input("Please input the target column."+
                                       "Must be within 5 tiles.")) - 1
-            coord2 = int(input("Please input the target column."+
+            coord2 = int(input("Please input the target row."+
                                       "Must be within 5 tiles.")) - 1
             if coord1 > self.x - 6 and coord1 < self.x + 6 and coord2 > self.y - 6 and coord2 < self.y + 6:
                 newTuple = (coord1, coord2)
-                turnProcessor.targets.add(newTuple)
+                targetingData.targets.append(newTuple)
                 break
             else:
                 print("Out of range.")
             
+    def checkShots(self):
+        for target in targetingData.targets:
+            if self.x == target[0] and self.y == target[1]:
+                print("Test")
         
 
     
