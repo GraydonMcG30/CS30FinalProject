@@ -22,8 +22,8 @@ class Vessel:
             self.exists = False
         
     def move(self, xshift, yshift):
-        self.x = x + xshift
-        self.y = y + yshift
+        self.x = self.x + xshift
+        self.y = self.y + yshift
     
     def fire(self):
         while True:

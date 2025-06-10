@@ -13,8 +13,8 @@ class Ocean:
                     map_[row].append("■")#blocker
                 else:
                     map_[row].append(" ")
-        map_[0][0] = []
-        map_[9][9] = []
+        map_[0][0] = " "
+        map_[9][9] = " "
         return map_
 
                 
