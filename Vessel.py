@@ -14,7 +14,6 @@ class Vessel:
         self.x = x
         self.y = y
         self.health = health
-        self.exists = True
         
     def takeDamage(self, damage):
         self.health -= damage
@@ -41,7 +40,11 @@ class Vessel:
     def checkShots(self):
         for target in targetingData.targets:
             if self.x == target[0] and self.y == target[1]:
-                print("Test")
+                print( "Player Hit")
+                self.health = self.health - 1
+        
+
+                
         
 
     
