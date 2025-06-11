@@ -15,7 +15,7 @@ player2Score = 0
 oceanMap = ocean.Ocean(10, 10)
 oceanMap.map[0][9] = "■"
 oceanMap.map[9][0] = "■"
-playerShip1 = vessel.Vessel(1, 1, 5)
+playerShip1 = vessel.Vessel(9, 9, 5)
 playerShip2 = vessel.Vessel(0, 0, 5)
 
 def player1Turn():
@@ -60,6 +60,7 @@ def player1Turn():
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = "x"
         print(tabulate(tempMap))
+        stall = input("Proceed.")
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = " "
     print("""
@@ -119,12 +120,13 @@ def player2Turn():
     firing = input("Fire? Type Y or Yes to fire. Anything else will be interpreted as a no.").lower()
     if firing == "y" or firing == "yes":
         print("Please pick three locations to shoot.")
-        playerShip1.fire()
-        playerShip1.fire()
-        playerShip1.fire()
+        playerShip2.fire()
+        playerShip2.fire()
+        playerShip2.fire()
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = "x"
         print(tabulate(tempMap))
+        stall = input("Proceed.")
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = " "
         print("""
