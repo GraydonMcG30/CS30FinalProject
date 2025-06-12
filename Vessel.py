@@ -42,6 +42,7 @@ class Vessel:
             if self.x == target[0] and self.y == target[1]:
                 print( "Player Hit")
                 self.health = self.health - 1
+        targetingData.targets = []
         
 
                 

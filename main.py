@@ -5,6 +5,27 @@ import vessel
 import targetingData
 player1Score = 0
 player2Score = 0
+blanker = """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 
 
 #Functions
@@ -15,10 +36,12 @@ player2Score = 0
 oceanMap = ocean.Ocean(10, 10)
 oceanMap.map[0][9] = "■"
 oceanMap.map[9][0] = "■"
-playerShip1 = vessel.Vessel(9, 9, 5)
+playerShip1 = vessel.Vessel(2, 2, 5)
 playerShip2 = vessel.Vessel(0, 0, 5)
 
 def player1Turn():
+    global blanker
+    nextPlayer = input("When player 1 is ready, press Enter.")
     tempMap = oceanMap.map[:]
     tempMap[playerShip1.x][playerShip1.y] = "@"
     print(tabulate(tempMap))
@@ -28,16 +51,16 @@ def player1Turn():
 
         moveDirection = input("Would you like to move NORTH, EAST, SOUTH, WEST, or STAY.").lower()
         if moveDirection in validOptions:
-            if moveDirection == "north" and (playerShip1.x - 1) > (-1) and oceanMap.map[playerShip1.x - 1][playerShip1.y] == " ":
+            if moveDirection == "north" and (playerShip1.x - 1) > (-1) and oceanMap.map[playerShip1.x - 1][playerShip1.y] == " " and not (playerShip1.x -1 == playerShip2.x and playerShip1.y == playerShip2.y):
                 playerShip1.move(-1, 0)
                 break
-            elif moveDirection == "east"  and (playerShip1.y + 1) < 10 and oceanMap.map[playerShip1.x][playerShip1.y + 1] == " ":
+            elif moveDirection == "east"  and (playerShip1.y + 1) < 10 and oceanMap.map[playerShip1.x][playerShip1.y + 1] == " " and not (playerShip1.x == playerShip2.x and playerShip1.y + 1 == playerShip2.y) :
                 playerShip1.move(0, 1)
                 break
-            elif moveDirection == "south" and (playerShip1.x + 1) < 10 and oceanMap.map[playerShip1.x + 1][playerShip1.y] == " " :
+            elif moveDirection == "south" and (playerShip1.x + 1) < 10 and oceanMap.map[playerShip1.x + 1][playerShip1.y] == " " and not (playerShip1.x + 1 == playerShip2.x and playerShip1.y == playerShip2.y):
                 playerShip1.move(1, 0)
                 break
-            elif moveDirection == "west" and (playerShip1.y - 1) > (-1) and oceanMap.map[playerShip1.x] [playerShip1.y - 1]== " ":
+            elif moveDirection == "west" and (playerShip1.y - 1) > (-1) and oceanMap.map[playerShip1.x] [playerShip1.y - 1]== " " and not (playerShip1.x == playerShip2.x and playerShip1.y - 1 == playerShip2.y):
                 playerShip1.move(0, -1)
                 break
             elif moveDirection == "stay":
@@ -60,31 +83,16 @@ def player1Turn():
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = "x"
         print(tabulate(tempMap))
-        stall = input("Proceed.")
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = " "
-    print("""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """)
+    nextTurn = input("Press Enter, then hand over the computer to the next player")
+    print(blanker)
     player2Turn()
 
 
 def player2Turn():
+    global blanker
+    nextPlayer = input("When player 2 is ready, press Enter.")
     tempMap = oceanMap.map[:]
     tempMap[playerShip2.x][playerShip2.y] = "@"
     print(tabulate(tempMap))
@@ -94,16 +102,16 @@ def player2Turn():
         validOptions = {"north", "east", "south", "west", "stay"}
         moveDirection = input("Would you like to move NORTH, EAST, SOUTH, WEST, or STAY.").lower()
         if moveDirection in validOptions:
-            if moveDirection == "north" and (playerShip2.x - 1) > (-1) and oceanMap.map[playerShip2.x - 1][playerShip2.y] == " ":
+            if moveDirection == "north" and (playerShip2.x - 1) > (-1) and oceanMap.map[playerShip2.x - 1][playerShip2.y] == " " and not (playerShip2.x -1 == playerShip1.x and playerShip2.y == playerShip1.y):
                 playerShip2.move(-1, 0)
                 break
-            elif moveDirection == "east"  and (playerShip2.y + 1) < 10 and oceanMap.map[playerShip2.x][playerShip2.y + 1] == " ":
+            elif moveDirection == "east"  and (playerShip2.y + 1) < 10 and oceanMap.map[playerShip2.x][playerShip2.y + 1] == " " and not (playerShip2.x == playerShip1.x and playerShip2.y + 1 == playerShip1.y):
                 playerShip2.move(0, 1)
                 break
-            elif moveDirection == "south" and (playerShip2.x + 1) < 10 and oceanMap.map[playerShip2.x + 1][playerShip2.y] == " " :
+            elif moveDirection == "south" and (playerShip2.x + 1) < 10 and oceanMap.map[playerShip2.x + 1][playerShip2.y] == " " and not (playerShip2.x + 1 == playerShip1.x and playerShip2.y == playerShip1.y):
                 playerShip2.move(1, 0)
                 break
-            elif moveDirection == "west" and (playerShip2.y - 1) > (-1) and oceanMap.map[playerShip2.x] [playerShip2.y - 1]== " ":
+            elif moveDirection == "west" and (playerShip2.y - 1) > (-1) and oceanMap.map[playerShip2.x] [playerShip2.y - 1]== " " and not (playerShip2.x == playerShip1.x and playerShip2.y - 1 == playerShip1.y):
                 playerShip2.move(0, -1)
                 break
             elif moveDirection == "stay":
@@ -126,27 +134,10 @@ def player2Turn():
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = "x"
         print(tabulate(tempMap))
-        stall = input("Proceed.")
         for target in targetingData.targets:
             tempMap[target[0]][target[1]] = " "
-        print("""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """)
+    stall = input("Press Enter to proceed")
+    print(blanker)
     turnProcessing()
     
 
@@ -154,39 +145,21 @@ def player2Turn():
 def turnProcessing():
     global player1Score
     global player2Score
-    playerShip1.checkShots()
+    #playerShip1.checkShots()
     playerShip2.checkShots()
     targetingData.targets = []
     if playerShip1.health < 1:
         print("Player 2 wins!")
         player2Score = player2Score + 1
         print("Score: Player 1: " + str(player1Score) + " Player 2: " + str(player2Score))
-        print("Play Again?")
+        proceed = input("Play Again?")
         player1Turn()
     elif playerShip2.health < 1:
         print("Player 1 wins!")
         player2Score = player2Score + 1
         print("Score: Player 1: " + str(player1Score) + " Player 2: " + str(player2Score))
-        print("Play Again?")
+        proceed = input("Play Again?")
         player1Turn()
-    print("""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """)
     player1Turn()
         
         
