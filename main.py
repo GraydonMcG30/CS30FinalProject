@@ -36,7 +36,7 @@ blanker = """
 oceanMap = ocean.Ocean(10, 10)
 oceanMap.map[0][9] = "■"
 oceanMap.map[9][0] = "■"
-playerShip1 = vessel.Vessel(2, 2, 5)
+playerShip1 = vessel.Vessel(9, 9, 5)
 playerShip2 = vessel.Vessel(0, 0, 5)
 
 def player1Turn():
@@ -145,8 +145,8 @@ def player2Turn():
 def turnProcessing():
     global player1Score
     global player2Score
-    #playerShip1.checkShots()
-    playerShip2.checkShots()
+    playerShip1.checkShots(False)
+    playerShip2.checkShots(True)
     targetingData.targets = []
     if playerShip1.health < 1:
         print("Player 2 wins!")

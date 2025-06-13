@@ -30,19 +30,20 @@ class Vessel:
                                       "Must be within 5 tiles.")) - 1
             coord2 = int(input("Please input the target row."+
                                       "Must be within 5 tiles.")) - 1
-            if coord1 > self.x - 6 and coord1 < self.x + 6 and coord2 > self.y - 6 and coord2 < self.y + 6:
+            if coord1 > self.x - 6 and coord1 < self.x + 6 and coord2 > self.y - 6 and coord2 < self.y + 6 and coord1 > 0 and coord1 > 0:
                 newTuple = (coord1, coord2)
                 targetingData.targets.append(newTuple)
                 break
             else:
                 print("Out of range.")
             
-    def checkShots(self):
+    def checkShots(self, destroy):
         for target in targetingData.targets:
             if self.x == target[0] and self.y == target[1]:
                 print( "Player Hit")
                 self.health = self.health - 1
-        targetingData.targets = []
+        if destroy == True:
+            targetingData.targets = []
         
 
                 
