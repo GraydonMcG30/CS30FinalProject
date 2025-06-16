@@ -1,8 +1,8 @@
-
+# Imports and Global Variables-------------------------------------------------
 import random
 
 
-
+# Classes ---------------------------------------------------------------------
 class Ocean:
     """An ocean map."""
     

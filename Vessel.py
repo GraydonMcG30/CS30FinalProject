@@ -1,8 +1,8 @@
-#Imports and Global Variables
+# Imports and Global Variables-------------------------------------------------
 import targetingData
 
 
-#Classes
+# Classes ---------------------------------------------------------------------
 class Vessel:
     """Any and all ships."""
 
