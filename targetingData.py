@@ -1,4 +1,4 @@
 #Imports and Global Variables
 
-targets = []
-
+ship1targets = []
+ship2targets = []
